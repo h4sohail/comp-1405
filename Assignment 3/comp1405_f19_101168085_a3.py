@@ -80,12 +80,12 @@ while(exit_condition == False): # while loop to keep asking the user for input i
     print('1. Crime Films\n2. Super-Heroes')
     sub_genre = input('Please select the Sub-Genre: ') # get the sub-genre selection of the user
     
-    if sub_genre == '1': # if they enter '1' set genre to Crime Films
+    if sub_genre == '1': # if they enter '1' set sub genre to Crime Films
         print('You selected: Crime Films\n')
 
-        choice = input('Is the movie based on the Italian mob?: ').lower() # get the answer for the question
+        choice = input('Is the movie based on the Italian mob?: ').lower() 
         if choice == 'yes': 
-            choice = input('Does the movie revolve around a crime family?: ').lower() # get the answer for the question
+            choice = input('Does the movie revolve around a crime family?: ').lower() 
             if choice == 'yes':
                 print('Your movie is The Godfather')
                 exit_choice = input('Do you want to quit? yes/no: ').lower() # get the answer for the question
@@ -102,9 +102,9 @@ while(exit_condition == False): # while loop to keep asking the user for input i
                 else:
                     continue # keep looping if no
         else:      
-            choice = input('Is the movie based on the police?: ').lower() # ask the user if they want to exit
+            choice = input('Is the movie based on the police?: ').lower() 
             if choice == 'yes':
-                choice = input('Does the movie have a criminal couple?: ').lower() # ask the user if they want to exit
+                choice = input('Does the movie have a criminal couple?: ').lower() 
                 if choice == 'yes':
                     print('Your movie is The Highwaymen')
                     exit_choice = input('Do you want to quit? yes/no: ').lower() # ask the user if they want to exit
@@ -121,9 +121,9 @@ while(exit_condition == False): # while loop to keep asking the user for input i
                         continue # keep looping if no
 
             else:     
-                choice = input('Does the movie have a crime duo?: ').lower() # ask the user if they want to exit
+                choice = input('Does the movie have a crime duo?: ').lower() 
                 if choice == 'yes':
-                    choice = input('Are the two main characters twins?: ').lower() # ask the user if they want to exit
+                    choice = input('Are the two main characters twins?: ').lower() 
                     if choice == 'yes':
                         print('Your movie is Legend')
                         exit_choice = input('Do you want to quit? yes/no: ').lower() # ask the user if they want to exit
@@ -140,7 +140,7 @@ while(exit_condition == False): # while loop to keep asking the user for input i
                             continue # keep looping if no
                         
                 else:
-                    choice = input('Is the main character an impersonator?: ').lower() # ask the user if they want to exit
+                    choice = input('Is the main character an impersonator?: ').lower() 
                     if choice == 'yes':    
                         print('Your movie is Catch Me If You Can')
                         exit_choice = input('Do you want to quit? yes/no: ').lower() # ask the user if they want to exit
@@ -149,7 +149,7 @@ while(exit_condition == False): # while loop to keep asking the user for input i
                         else:
                             continue # keep looping if no
                     else:
-                        choice = input('Does the movie revolve around heists?: ').lower() # ask the user if they want to exit    
+                        choice = input('Does the movie revolve around heists?: ').lower()  
                         if choice == 'yes':
                             print('Your movie is Oceans Twelve')
                             exit_choice = input('Do you want to quit? yes/no: ').lower() # ask the user if they want to exit
@@ -158,7 +158,7 @@ while(exit_condition == False): # while loop to keep asking the user for input i
                             else:
                                 continue # keep looping if no
                         else:
-                            choice = input('Does the main character have memory loss?: ').lower() # ask the user if they want to exit  
+                            choice = input('Does the main character have memory loss?: ').lower() 
                             if choice == 'yes':
                                     print('Your movie is Memento')
                                     exit_choice = input('Do you want to quit? yes/no: ').lower() # ask the user if they want to exit
@@ -174,12 +174,12 @@ while(exit_condition == False): # while loop to keep asking the user for input i
                                 else:
                                     continue # keep looping if no
 
-    elif sub_genre == '2':
+    elif sub_genre == '2': # if they enter '2' set sub genre to Super-Heroes
         print('You selected: Super-Heroes\n')
 
-        choice = input('Is the main character a billionaire?: ').lower() # ask the user if they want to exit
+        choice = input('Is the main character a billionaire?: ').lower() 
         if choice == 'yes':
-            choice = input('Does the main character fly?: ').lower() # ask the user if they want to exit
+            choice = input('Does the main character fly?: ').lower() 
             if choice == 'yes':
                 print('Your movie is Ironman')
                 exit_choice = input('Do you want to quit? yes/no: ').lower() # ask the user if they want to exit
@@ -196,9 +196,9 @@ while(exit_condition == False): # while loop to keep asking the user for input i
                 else:
                     continue # keep looping if no
         else:      
-            choice = input('Does the main character change size when they fight?: ').lower() # ask the user if they want to exit
+            choice = input('Does the main character change size when they fight?: ').lower() 
             if choice == 'yes':
-                choice = input('Does the main character change color when they fight?: ').lower() # ask the user if they want to exit
+                choice = input('Does the main character change color when they fight?: ').lower() 
                 if choice == 'yes':
                     print('Your movie is Hulk')
                     exit_choice = input('Do you want to quit? yes/no: ').lower() # ask the user if they want to exit
@@ -215,9 +215,9 @@ while(exit_condition == False): # while loop to keep asking the user for input i
                         continue # keep looping if no 
 
             else:     
-                choice = input('Does one of the characters have a hammer?: ').lower() # ask the user if they want to exit
+                choice = input('Does one of the characters have a hammer?: ').lower() 
                 if choice == 'yes':
-                    choice = input('Does one of the characters have a gauntlet?: ').lower() # ask the user if they want to exit
+                    choice = input('Does one of the characters have a gauntlet?: ').lower()
                     if choice == 'yes':
                         print('Your movie is Endgame')
                         exit_choice = input('Do you want to quit? yes/no: ').lower() # ask the user if they want to exit
@@ -234,7 +234,7 @@ while(exit_condition == False): # while loop to keep asking the user for input i
                             continue # keep looping if no
                         
                 else:
-                    choice = input('Do the main character use magic?: ').lower() # ask the user if they want to exit
+                    choice = input('Do the main character use magic?: ').lower()
                     if choice == 'yes':    
                         print('Your movie is Doctor Strange')
                         exit_choice = input('Do you want to quit? yes/no: ').lower() # ask the user if they want to exit
@@ -243,7 +243,7 @@ while(exit_condition == False): # while loop to keep asking the user for input i
                         else:
                             continue # keep looping if no
                     else:
-                        choice = input('Does the main character have laser eyes?: ').lower() # ask the user if they want to exit    
+                        choice = input('Does the main character have laser eyes?: ').lower()  
                         if choice == 'yes':
                             print('Your movie is Superman')
                             exit_choice = input('Do you want to quit? yes/no: ').lower() # ask the user if they want to exit
@@ -252,7 +252,7 @@ while(exit_condition == False): # while loop to keep asking the user for input i
                             else:
                                 continue # keep looping if no
                         else:
-                            choice = input('Does the main character have a shield?: ').lower() # ask the user if they want to exit  
+                            choice = input('Does the main character have a shield?: ').lower()   
                             if choice == 'yes':
                                     print('Your movie is Captain America')
                                     exit_choice = input('Do you want to quit? yes/no: ').lower() # ask the user if they want to exit
@@ -268,5 +268,5 @@ while(exit_condition == False): # while loop to keep asking the user for input i
                                 else:
                                     continue # keep looping if no 
     else:
-        exit_condition = True
+        exit_condition = True # exit the loop if the input was not '1' or '2'
 
