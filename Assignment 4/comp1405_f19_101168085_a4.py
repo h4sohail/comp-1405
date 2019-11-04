@@ -2,14 +2,6 @@ import pygame # importing a semi useless library (again)
 
 pygame.display.init() # intitialize display
 
-print('Dear TA/Professor, Assignments like this do not teach you the essence of programming, instead it just teaches how to painfully debug external libraries.')
-print('This is an introduction to CS course, we should not have to worry about 6 hours of debugging/trial and error with PyGame.')
-print('This library has many bugs, from simple issues with trying to close or move the window, to weird OS related issues with optimizations and it\'s graphics engine!')
-print('Instead if we were taught to use just the standard library of Python and it\'s immense set of features, we would be far better programmers.')
-print('We have not even covered simple structures like dictionaries, yet we are diving deep into PyGame\'s feature set for some odd reason.')
-print('If I had known this section would be like this, I would have transfered to different section.')
-print('I am not in GameDEV, don\'t force me to use PyGame.\n\n')
-
 instructions_choice = input('Do you need instructions?: ').lower() # ask the user for their selection and make it lowercase
 if instructions_choice == 'yes': # if user enters yes show instructions
     print('Type the filename of the background image you would like to use \n'
