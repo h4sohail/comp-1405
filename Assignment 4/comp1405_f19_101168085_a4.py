@@ -57,7 +57,7 @@ while(exit_condition): # start the main loop for handling input and drawing
             y_cordinate = mouse_y # set the cordinate for the ghost the same as the y cordinate of the mouse
 
             screen.blit(background_image, (0, 0)) # re-add the background image to refresh it
-            pygame.display.update() # update the display to show the change
+ 
             left_click = pygame.mouse.get_pressed()[0] # get the left click value, from the list of mouse buttons returned by pygame.mouse.get_pressed
             if left_click: # check if the left click was pressed
                 exit_condition = False # set the exit condition for the outer loop
