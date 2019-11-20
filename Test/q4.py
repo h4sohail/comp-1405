@@ -18,7 +18,7 @@ def evens(query):
             evens.append(num)
     return evens
 
-def random_evens(lst):
+def random_even(lst):
     return lst[random.randint(0, len(lst)-1)]
  
         
@@ -28,7 +28,7 @@ def grid(query, y, z):
         for i in range(y):
             row = []
             for j in range(z):
-                row.append(random_evens(evens(query)))
+                row.append(random_even(evens(query)))
             grid.append(row)
 
         for row in grid:
@@ -40,7 +40,6 @@ query = '1,3,4,5,6,7,8,9 '
 y = 3
 z = 4
 
-# Generate a 5x5 grid of random even integers from the query 
+# Generate a 3x4 grid of random even integers from the query 
 
 grid(query, y, z)
-
