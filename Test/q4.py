@@ -1,51 +1,46 @@
-# y x z list
-# '1,2,3,4,5,6, '
-# 2 x 2
-
-# Output:
-# 2 6
-# 4 6
-
-# Strip the input string
-# values are random even numbers from input
-# Create a 2d 'y' by 'z' list with values
+# Create a 2d grid, 'y' by 'z' list with random even values from a query
 
 import random
 
-def has_even(string):
-    string = string.strip()
-    lst = string.split(',')
+def has_even(query): # (Edgecase) Incase there are no evens in the query
+    query = query.strip()
+    lst = query.split(',')
     for num in lst:
         if int(num) % 2 == 0:
             return True
     return False
 
-def random_evens(string):
-    string = string.strip()
-    lst = string.split(',')
-    while(True):
-        random_index = random.randint(0, len(lst)-1)
-        if int(lst[random_index]) % 2 == 0:
-            return lst[random_index]
+def evens(query):
+    evens = []
+    nums = query.strip().split(',')
+    for num in nums:
+        if int(num) % 2 == 0:
+            evens.append(num)
+    return evens
 
-def make_lst(string, y, z):
-    lst_2d = []
-    if has_even(string):
+def random_evens(lst):
+    return lst[random.randint(0, len(lst)-1)]
+ 
+        
+def grid(query, y, z):
+    grid = []
+    if has_even(query): # (Edgecase) Incase there are no evens in the query
         for i in range(y):
             row = []
             for j in range(z):
-                random_even = random_evens(string)
-                row.append(random_even)
-            lst_2d.append(row)
+                row.append(random_evens(evens(query)))
+            grid.append(row)
 
-        for i in range(len(lst_2d)):
-            print(lst_2d[i])
+        for row in grid:
+            print(row)
     else:
-        return lst_2d
+        return grid
 
-string = '1,3,4,5,6,7,8,9,10 '
-y = 4
-z = 3
+query = '1,3,4,5,6,7,8,9 '
+y = 3
+z = 4
 
-make_lst(string, y, z)
+# Generate a 5x5 grid of random even integers from the query 
+
+grid(query, y, z)
 
