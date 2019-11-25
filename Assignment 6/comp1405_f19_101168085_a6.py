@@ -49,20 +49,20 @@ class ChessBoard():
             choice = input(f'Would you like to move a piece (y/n): ').lower()
             if choice == 'y':
                 while(True):
-                    row = int(input('Which row would you like to move from: '))
-                    column = int(input('Which column would you like to move from: '))
+                    row = int(input('Which row would you like to move from (top left is 0,0): '))
+                    column = int(input('Which column would you like to move from (top left is 0,0): '))
                     if row > 8 or column > 8:
                         print('Wrong selection idiot')
                         continue
 
-                    new_row = int(input('Which row would you like to move it to: '))
-                    new_col = int(input('Which column would you like to move it to: '))
+                    new_row = int(input('Which row would you like to move it to (top left is 0,0): '))
+                    new_col = int(input('Which column would you like to move it to (top left is 0,0): '))
                     if new_row > 8 or new_col > 8:
                         print('Wrong move idiot')
                         continue
                     
                     elif self.chess_board[new_row][new_col] != '-':
-                        print('That position is already occupied')
+                        print(f'The position ({new_row}, {new_col}) is already occupied')
                         print('Options:')
                         print('1: Swap the two pieces')
                         print('2: Replace the piece')
