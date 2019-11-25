@@ -80,35 +80,35 @@ class ChessBoard():
         Args:
             self: instance of the class  
         """
-            choice = input(f'Would you like to move a piece (y/n): ').lower()
-            if choice == 'y':
-                while(True):
-                    row = int(input('Which row would you like to move from (top left is 0,0): '))
-                    column = int(input('Which column would you like to move from (top left is 0,0): '))
-                    if row >= 8 or row < 0 or column >= 8 or column < 0:
-                        print('Wrong selection idiot')
-                        continue
+        choice = input(f'Would you like to move a piece (y/n): ').lower()
+        if choice == 'y':
+            while(True):
+                row = int(input('Which row would you like to move from (top left is 0,0): '))
+                column = int(input('Which column would you like to move from (top left is 0,0): '))
+                if row >= 8 or row < 0 or column >= 8 or column < 0:
+                    print('Wrong selection idiot')
+                    continue
 
-                    new_row = int(input('Which row would you like to move it to (top left is 0,0): '))
-                    new_col = int(input('Which column would you like to move it to (top left is 0,0): '))
-                    if new_row >= 8 or new_row < 0 or new_col >= 8 or new_col < 0:
-                        print('Wrong move idiot')
-                        continue
-                    
-                    elif self.chess_board[new_row][new_col] != '-':
-                        print(f'The position ({new_row}, {new_col}) is already occupied')
-                        print('Options:')
-                        print('1: Swap the two pieces')
-                        print('2: Replace the piece')
-                        choice = input('Type \'1\' or \'2\': ')
-                    
-                    if choice == '1':
-                        self.chess_board[row][column], self.chess_board[new_row][new_col] = self.chess_board[new_row][new_col], self.chess_board[row][column]
-                        break
-                    else:
-                        self.chess_board[new_row][new_col] = self.chess_board[row][column]
-                        self.chess_board[row][column] = '-'
-                        break
+                new_row = int(input('Which row would you like to move it to (top left is 0,0): '))
+                new_col = int(input('Which column would you like to move it to (top left is 0,0): '))
+                if new_row >= 8 or new_row < 0 or new_col >= 8 or new_col < 0:
+                    print('Wrong move idiot')
+                    continue
+                
+                elif self.chess_board[new_row][new_col] != '-':
+                    print(f'The position ({new_row}, {new_col}) is already occupied')
+                    print('Options:')
+                    print('1: Swap the two pieces')
+                    print('2: Replace the piece')
+                    choice = input('Type \'1\' or \'2\': ')
+                
+                if choice == '1':
+                    self.chess_board[row][column], self.chess_board[new_row][new_col] = self.chess_board[new_row][new_col], self.chess_board[row][column]
+                    break
+                else:
+                    self.chess_board[new_row][new_col] = self.chess_board[row][column]
+                    self.chess_board[row][column] = '-'
+                    break
 
     def calculate_score(self):
         self.white_score = 0
