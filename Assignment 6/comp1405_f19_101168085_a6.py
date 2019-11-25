@@ -25,7 +25,7 @@ class ChessBoard():
 
     def parse_move(self):
         while(True):
-            self.move = input('Type your move: ')
+            self.move = input('Initialize the board: ')
             if len(self.move) != 8:
                 print('Wrong move idiot')
                 continue
