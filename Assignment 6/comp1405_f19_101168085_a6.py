@@ -155,6 +155,19 @@ class ChessBoard():
 
 
 def main(): # Main function
+    
+    print('-Welcome to the chessboard simulator-\n')
+    print('Instructions:')
+    print('Firstly make a new chessboard, to put a piece on the chessboard,') 
+    print('input an 8 character long string with \'-\' and a piece')
+    print('Example inputs: ')
+    print('\t--------')
+    print('\t---k----')
+    print('\t-------Q')
+    print('After the board has been populated you may chose to move pieces,') 
+    print('remember for reference, the top left point is (0,0) and the bottom')
+    print('right piece is (7,7)\n')
+
     while(True): # Outter loop to remake the chessboard
         chess_board = ChessBoard() # Instantiate the ChessBoard class and generate a 2D list
         chess_board.setup() # Call the setup method to populate the 2D list
