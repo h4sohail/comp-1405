@@ -3,52 +3,83 @@
 
 class ChessBoard():
     def __init__(self):
-        self.chess_board = []
+        """
+        This is the default constructor that initializes the ChessBoard class
+        Generates a 2-D list used to represent the chessboard
 
-        self.w_peices = ['k','q','r','n','b','p']            
-        self.w_score = 0
+        Args:
+            self: instance of the class  
+        """
+        self.chess_board = [] # Empty chessboard list
 
-        self.b_peices = ['K','Q','R','N','B','P']
-        self.b_score = 0
+        self.w_peices = ['k','q','r','n','b','p'] # White peices            
+        self.b_peices = ['K','Q','R','N','B','P'] # Black peices
 
-        for i in range(8):
+        for i in range(8): # Itterate over 8x8 list
             row = []
             for j in range(8):
-                row.append('-')
-            self.chess_board.append(row)
+                row.append('-') 
+            self.chess_board.append(row) # Append '-' to each cell in 8x8 list
 
     def print_chess_board(self):
-        for row in self.chess_board:
-            for item in row:
-                print(f'  {item}  ', end=(''))
-            print('\n')
+        """
+        Prints the current state of the chessboard
+
+        Args:
+            self: instance of the class  
+        """
+        for row in self.chess_board: # Get each row in the chessboard list
+            for item in row: # Get each item in the row
+                print(f'  {item}  ', end=('')) # Print the item with some spaces as the buffer
+            print('\n') # Print a new line to go to the next row
 
     def parse_move(self):
-        while(True):
-            self.move = input('Initialize the board: ')
-            if len(self.move) != 8:
-                print('Wrong move idiot')
+        """
+        Parses the user input to get the piece and the position
+
+        Args:
+            self: instance of the class  
+        Returns:
+            peice (string): The peice provided by the user, '-' if none provided
+            column (int): The column position of the piece, '0' if no peice provided
+        """
+        while(True): # Loop for input validation
+            self.move = input('Initialize the board: ') # Get the user input
+            if len(self.move) != 8: # Make sure the input was valid
+                print('Wrong move idiot') 
                 continue
             else:
                 break
 
-        piece = self.move.strip('-')
-        if piece == '':
-            piece = '-'
+        piece = self.move.strip('-') # Strip the '-' characters
+        if piece == '': # (Edge case) No piece provided
+            piece = '-' # Set the piece to '-'
 
-        for i in range(len(self.move)):
-            if self.move[i] == piece:
+        for i in range(len(self.move)): # Get the column position of the piece
+            if self.move[i] == piece: 
                 column = i
 
-        return piece, column
+        return piece, column # Return the piece and the column
 
     def setup(self):
-        for row in range(8):
-            piece, column = self.parse_move() # get the details from players input
-            self.chess_board[row][column] = piece
-            self.print_chess_board() # print the final chessboard
+        """
+        Sets up the chessboard from the user input for all 8 rows and prints it after each row
+
+        Args:
+            self: instance of the class  
+        """
+        for row in range(8): # Itterate over 8 rows in the chessboard
+            piece, column = self.parse_move() # Call the parse_move method and store the returns
+            self.chess_board[row][column] = piece # Apply the input to the chessboard
+            self.print_chess_board() # Print the final chessboard
        
     def move_piece(self):
+        """
+        Moves a piece based on user input
+
+        Args:
+            self: instance of the class  
+        """
             choice = input(f'Would you like to move a piece (y/n): ').lower()
             if choice == 'y':
                 while(True):
@@ -79,7 +110,7 @@ class ChessBoard():
                         self.chess_board[row][column] = '-'
                         break
 
-    def check_score(self):
+    def calculate_score(self):
         self.white_score = 0
         self.black_score = 0
 
@@ -119,13 +150,13 @@ def main():
     while(True):
         chess_board = ChessBoard()
         chess_board.setup()
-        chess_board.check_score() # get the new score for the chessboard
+        chess_board.calculate_score() # get the new score for the chessboard
 
         while(True): # Start playing the chessboard we just created above
             chess_board.move_piece()
             chess_board.print_chess_board()
-            chess_board.check_score() # get the new score for the chessboard
-            
+            chess_board.calculate_score() # get the new score for the chessboard       
+
             exit_condition = input('Would you like to continue playing on this chessboard? (y/n): ').lower()
             if exit_condition == 'n':
                 break
