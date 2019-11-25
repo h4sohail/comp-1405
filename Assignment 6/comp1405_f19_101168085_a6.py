@@ -12,8 +12,8 @@ class ChessBoard():
         """
         self.chess_board = [] # Empty chessboard list
 
-        self.w_peices = ['k','q','r','n','b','p'] # White peices            
-        self.b_peices = ['K','Q','R','N','B','P'] # Black peices
+        self.w_pieces = ['k','q','r','n','b','p'] # White pieces            
+        self.b_pieces = ['K','Q','R','N','B','P'] # Black pieces
 
         for i in range(8): # Itterate over 8x8 list
             row = []
@@ -40,8 +40,8 @@ class ChessBoard():
         Args:
             self: instance of the class  
         Returns:
-            peice (string): The peice provided by the user, '-' if none provided
-            column (int): The column position of the piece, '0' if no peice provided
+            piece (string): The piece provided by the user, '-' if none provided
+            column (int): The column position of the piece, '0' if no piece provided
         """
         while(True): # Loop for input validation
             self.move = input('Initialize the board: ') # Get the user input
@@ -80,91 +80,100 @@ class ChessBoard():
         Args:
             self: instance of the class  
         """
-        choice = input(f'Would you like to move a piece (y/n): ').lower()
-        if choice == 'y':
+        choice = input(f'Would you like to move a piece (y/n): ').lower() # Ask the user if they would like to move a piece
+        if choice == 'y': # If they say yes, continue
             while(True):
-                row = int(input('Which row would you like to move from (top left is 0,0): '))
-                column = int(input('Which column would you like to move from (top left is 0,0): '))
-                if row >= 8 or row < 0 or column >= 8 or column < 0:
-                    print('Wrong selection idiot')
-                    continue
+                row = int(input('Which row would you like to move from (top left is 0,0): ')) # Ask for the row to move from
+                column = int(input('Which column would you like to move from (top left is 0,0): ')) # Ask for the col to move from
+                if row >= 8 or row < 0 or column >= 8 or column < 0: # Input validation
+                    print('Wrong selection, please try again')
+                    continue # Keep looping
 
-                new_row = int(input('Which row would you like to move it to (top left is 0,0): '))
-                new_col = int(input('Which column would you like to move it to (top left is 0,0): '))
-                if new_row >= 8 or new_row < 0 or new_col >= 8 or new_col < 0:
-                    print('Wrong move idiot')
-                    continue
+                new_row = int(input('Which row would you like to move it to (top left is 0,0): ')) # Ask for the row to move to
+                new_col = int(input('Which column would you like to move it to (top left is 0,0): ')) # Ask for the col to move to
+                if new_row >= 8 or new_row < 0 or new_col >= 8 or new_col < 0: # Input validation
+                    print('Wrong move, please try again')
+                    continue # Keep looping
                 
-                elif self.chess_board[new_row][new_col] != '-':
+                elif self.chess_board[new_row][new_col] != '-': # If there is a piece already at the new position
                     print(f'The position ({new_row}, {new_col}) is already occupied')
-                    print('Options:')
+                    print('Options:') # Offer two choices, they can either swap or replace
                     print('1: Swap the two pieces')
                     print('2: Replace the piece')
-                    choice = input('Type \'1\' or \'2\': ')
+                    choice = input('Type \'1\' or \'2\': ') # Get the user choice
                 
-                if choice == '1':
+                if choice == '1': # If they ask to swap the pieces
+                    # Tuple matching to swap the two positions in the chessboard
                     self.chess_board[row][column], self.chess_board[new_row][new_col] = self.chess_board[new_row][new_col], self.chess_board[row][column]
-                    break
-                else:
-                    self.chess_board[new_row][new_col] = self.chess_board[row][column]
-                    self.chess_board[row][column] = '-'
-                    break
+                    break # Break the loop
+                else: # If they ask to replace the piece
+                    self.chess_board[new_row][new_col] = self.chess_board[row][column] # Replace the new position with the old one
+                    self.chess_board[row][column] = '-' # Change the old position to a default of '-'
+                    break # Break the loop
 
     def calculate_score(self):
-        self.white_score = 0
-        self.black_score = 0
+        """
+        Calculates the score of the chessboard based on individual pieces each player has
 
-        for row in self.chess_board:
-            for piece in row:
-                if piece in self.w_peices:
-                    if piece == 'k':
-                        self.white_score += 0
-                    if piece == 'q':
-                        self.white_score += 10
-                    if piece == 'r':
-                        self.white_score += 5
-                    if piece == 'n':
+        Args:
+            self: instance of the class  
+        """
+        self.white_score = 0 # Score for white pieces
+        self.black_score = 0 # Score for black pieces
+
+        for row in self.chess_board: # Itterate over each row in the chessboard
+            for piece in row: # Itterate over each piece in the row
+                if piece in self.w_pieces: # Check if the piece is from the white piece list
+                    if piece == 'k': # If the piece is a King
+                        self.white_score += 0 
+                    if piece == 'q': # If the piece is a Queen
+                        self.white_score += 10 
+                    if piece == 'r': # If the piece is a Rook
+                        self.white_score += 5 
+                    if piece == 'n': # If the piece is a Knignt
                         self.white_score += 3.5
-                    if piece == 'b':
+                    if piece == 'b': # If the piece is a Bishop
                         self.white_score += 3
-                    if piece == 'p':
+                    if piece == 'p': # If the piece is a Pawn
                         self.white_score += 1
-                elif piece in self.b_peices:
-                    if piece == 'K':
+                elif piece in self.b_pieces: # Check if the piece is from the black piece list
+                    if piece == 'K': # If the piece is a King
                         self.black_score += 0
-                    if piece == 'Q':
+                    if piece == 'Q': # If the piece is a Queen
                         self.black_score += 10
-                    if piece == 'R':
+                    if piece == 'R': # If the piece is a Rook
                         self.black_score += 5
-                    if piece == 'N':
+                    if piece == 'N': # If the piece is a Knight
                         self.black_score += 3.5
-                    if piece == 'B':
+                    if piece == 'B': # If the piece is a Bishop
                         self.black_score += 3
-                    if piece == 'P':
+                    if piece == 'P': # If the piece is a Pawn
                         self.black_score += 1
         
-        print(f'White Score: {self.white_score}')
-        print(f'Black Score: {self.black_score}')
+        print(f'White Score: {self.white_score}') # Print white pieces score
+        print(f'Black Score: {self.black_score}') # Print black pieces score
 
-def main():
-    while(True):
-        chess_board = ChessBoard()
-        chess_board.setup()
-        chess_board.calculate_score() # get the new score for the chessboard
 
-        while(True): # Start playing the chessboard we just created above
-            chess_board.move_piece()
-            chess_board.print_chess_board()
-            chess_board.calculate_score() # get the new score for the chessboard       
+def main(): # Main function
+    while(True): # Outter loop to remake the chessboard
+        chess_board = ChessBoard() # Instantiate the ChessBoard class and generate a 2D list
+        chess_board.setup() # Call the setup method to populate the 2D list
+        chess_board.calculate_score() # Call the calculate_score method to display the score
 
-            exit_condition = input('Would you like to continue playing on this chessboard? (y/n): ').lower()
-            if exit_condition == 'n':
-                break
+        while(True): # Inner loop to keep playing the chessboard we just created above
+            chess_board.move_piece() # Call the move_piece method to ask the user if they would like to move
+            chess_board.print_chess_board() # Print the chessboard
+            chess_board.calculate_score() # Call the calculate_score method to print the score of the chessboard      
 
-        exit_condition = input('Would you like to create a new chessboard? (y/n): ').lower()
-        if exit_condition == 'n':
+            exit_condition = input('Would you like to continue playing on this chessboard? (y/n): ').lower() # Ask for the exit condition and lower case it
+            if exit_condition == 'n': # If user said no
+                break # Break the inner loop
+
+        exit_condition = input('Would you like to create a new chessboard? (y/n): ').lower() # Ask the user for the exit condition and lower case it
+        if exit_condition == 'n': # If the user said no
             print('Goodbye!')
-            break
+            break # Break the outter loop
+
 
 # Entry point of the program
 if __name__ == '__main__':
