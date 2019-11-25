@@ -118,40 +118,40 @@ class ChessBoard():
         Args:
             self: instance of the class  
         """
-        self.white_score = 0 # Score for white pieces
-        self.black_score = 0 # Score for black pieces
+        white_score = 0 # Score for white pieces
+        black_score = 0 # Score for black pieces
 
         for row in self.chess_board: # Itterate over each row in the chessboard
             for piece in row: # Itterate over each piece in the row
                 if piece in self.w_pieces: # Check if the piece is from the white piece list
                     if piece == 'k': # If the piece is a King
-                        self.white_score += 0 
+                        white_score += 0 
                     if piece == 'q': # If the piece is a Queen
-                        self.white_score += 10 
+                        white_score += 10 
                     if piece == 'r': # If the piece is a Rook
-                        self.white_score += 5 
+                        white_score += 5 
                     if piece == 'n': # If the piece is a Knignt
-                        self.white_score += 3.5
+                        white_score += 3.5
                     if piece == 'b': # If the piece is a Bishop
-                        self.white_score += 3
+                        white_score += 3
                     if piece == 'p': # If the piece is a Pawn
-                        self.white_score += 1
+                        white_score += 1
                 elif piece in self.b_pieces: # Check if the piece is from the black piece list
                     if piece == 'K': # If the piece is a King
-                        self.black_score += 0
+                        black_score += 0
                     if piece == 'Q': # If the piece is a Queen
-                        self.black_score += 10
+                        black_score += 10
                     if piece == 'R': # If the piece is a Rook
-                        self.black_score += 5
+                        black_score += 5
                     if piece == 'N': # If the piece is a Knight
-                        self.black_score += 3.5
+                        black_score += 3.5
                     if piece == 'B': # If the piece is a Bishop
-                        self.black_score += 3
+                        black_score += 3
                     if piece == 'P': # If the piece is a Pawn
-                        self.black_score += 1
+                        black_score += 1
         
-        print(f'White Score: {self.white_score}') # Print white pieces score
-        print(f'Black Score: {self.black_score}') # Print black pieces score
+        print(f'White Score: {white_score}') # Print white pieces score
+        print(f'Black Score: {black_score}') # Print black pieces score
 
 
 def main(): # Main function
