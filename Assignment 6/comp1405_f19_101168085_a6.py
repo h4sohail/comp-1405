@@ -42,8 +42,11 @@ class ChessBoard():
 
         return piece, column
 
-    def setup(self, piece, row, column):
+    def setup(self):
+        for row in range(8):
+            piece, column = self.parse_move() # get the details from players input
             self.chess_board[row][column] = piece
+            self.print_chess_board() # print the final chessboard
        
     def move_piece(self):
             choice = input(f'Would you like to move a piece (y/n): ').lower()
@@ -51,13 +54,13 @@ class ChessBoard():
                 while(True):
                     row = int(input('Which row would you like to move from (top left is 0,0): '))
                     column = int(input('Which column would you like to move from (top left is 0,0): '))
-                    if row > 8 or column > 8:
+                    if row >= 8 or row < 0 or column >= 8 or column < 0:
                         print('Wrong selection idiot')
                         continue
 
                     new_row = int(input('Which row would you like to move it to (top left is 0,0): '))
                     new_col = int(input('Which column would you like to move it to (top left is 0,0): '))
-                    if new_row > 8 or new_col > 8:
+                    if new_row >= 8 or new_row < 0 or new_col >= 8 or new_col < 0:
                         print('Wrong move idiot')
                         continue
                     
@@ -72,67 +75,57 @@ class ChessBoard():
                         self.chess_board[row][column], self.chess_board[new_row][new_col] = self.chess_board[new_row][new_col], self.chess_board[row][column]
                         break
                     else:
-                        self.chess_board[row][column] = self.chess_board[new_row][new_col]
+                        self.chess_board[new_row][new_col] = self.chess_board[row][column]
                         self.chess_board[row][column] = '-'
                         break
 
     def check_score(self):
-        self.white_player = 0
-        self.black_player = 0
+        self.white_score = 0
+        self.black_score = 0
 
         for row in self.chess_board:
             for piece in row:
                 if piece in self.w_peices:
                     if piece == 'k':
-                        self.white_player += 0
+                        self.white_score += 0
                     if piece == 'q':
-                        self.white_player += 10
+                        self.white_score += 10
                     if piece == 'r':
-                        self.white_player += 5
+                        self.white_score += 5
                     if piece == 'n':
-                        self.white_player += 3.5
+                        self.white_score += 3.5
                     if piece == 'b':
-                        self.white_player += 3
+                        self.white_score += 3
                     if piece == 'p':
-                        self.white_player += 1
+                        self.white_score += 1
                 elif piece in self.b_peices:
                     if piece == 'K':
-                        self.black_player += 0
+                        self.black_score += 0
                     if piece == 'Q':
-                        self.black_player += 10
+                        self.black_score += 10
                     if piece == 'R':
-                        self.black_player += 5
+                        self.black_score += 5
                     if piece == 'N':
-                        self.black_player += 3.5
+                        self.black_score += 3.5
                     if piece == 'B':
-                        self.black_player += 3
+                        self.black_score += 3
                     if piece == 'P':
-                        self.black_player += 1
+                        self.black_score += 1
         
-        return self.white_player, self.black_player
+        print(f'White Score: {self.white_score}')
+        print(f'Black Score: {self.black_score}')
 
 def main():
-
     while(True):
-        cb = ChessBoard()
-
-        for i in range(8):
-            piece, column = cb.parse_move() # get the details from players input
-            cb.setup(piece, i, column) # pass it to this function to setup a row in the chessboard
-            cb.print_chess_board() # print the final chessboard
-
-        white_score, black_score = cb.check_score() # get the score for the chessboard
-        print(f'White Score: {white_score}')
-        print(f'Black Score: {black_score}')
+        chess_board = ChessBoard()
+        chess_board.setup()
+        chess_board.check_score() # get the new score for the chessboard
 
         while(True): # Start playing the chessboard we just created above
-            cb.move_piece()
-            cb.print_chess_board()
-
-            white_score, black_score = cb.check_score() # get the new score for the chessboard
-            print(f'White Score: {white_score}')
-            print(f'Black Score: {black_score}')
-
+            chess_board.move_piece()
+            chess_board.print_chess_board()
+            chess_board.check_score() # get the new score for the chessboard
+            
             exit_condition = input('Would you like to continue playing on this chessboard? (y/n): ').lower()
             if exit_condition == 'n':
                 break
