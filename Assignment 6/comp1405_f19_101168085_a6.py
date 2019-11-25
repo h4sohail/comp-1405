@@ -19,7 +19,9 @@ class ChessBoard():
 
     def print_chess_board(self):
         for row in self.chess_board:
-            print(row)
+            for item in row:
+                print(f'  {item}  ', end=(''))
+            print('\n')
 
     def parse_move(self):
         while(True):
@@ -58,9 +60,20 @@ class ChessBoard():
                     if new_row > 8 or new_col > 8:
                         print('Wrong move idiot')
                         continue
-
-                    else:
+                    
+                    elif self.chess_board[new_row][new_col] != '-':
+                        print('That position is already occupied')
+                        print('Options:')
+                        print('1: Swap the two pieces')
+                        print('2: Replace the piece')
+                        choice = input('Type \'1\' or \'2\': ')
+                    
+                    if choice == '1':
                         self.chess_board[row][column], self.chess_board[new_row][new_col] = self.chess_board[new_row][new_col], self.chess_board[row][column]
+                        break
+                    else:
+                        self.chess_board[row][column] = self.chess_board[new_row][new_col]
+                        self.chess_board[row][column] = '-'
                         break
 
     def check_score(self):
