@@ -106,7 +106,7 @@ def main():
         for i in range(8):
             piece, column = cb.parse_move() # get the details from players input
             cb.setup(piece, i, column) # pass it to this function to setup a row in the chessboard
-        cb.print_chess_board() # print the final chessboard setup
+            cb.print_chess_board() # print the final chessboard
 
         white_score, black_score = cb.check_score() # get the score for the chessboard
         print(f'White Score: {white_score}')
