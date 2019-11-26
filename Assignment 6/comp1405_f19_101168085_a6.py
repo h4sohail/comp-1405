@@ -46,7 +46,7 @@ class ChessBoard():
         while(True): # Loop for input validation
             self.move = input('Initialize the board: ') # Get the user input
             if len(self.move) != 8: # Make sure the input was valid
-                print('Wrong move idiot') 
+                print('Wrong selection, please try again') 
                 continue
             else:
                 break
@@ -120,35 +120,35 @@ class ChessBoard():
         """
         white_score = 0 # Score for white pieces
         black_score = 0 # Score for black pieces
-
+        score_list = [0, 10, 5, 3.5, 3, 1]
         for row in self.chess_board: # Itterate over each row in the chessboard
             for piece in row: # Itterate over each piece in the row
                 if piece in self.w_pieces: # Check if the piece is from the white piece list
                     if piece == 'k': # If the piece is a King
-                        white_score += 0 
+                        white_score += score_list[0] 
                     if piece == 'q': # If the piece is a Queen
-                        white_score += 10 
+                        white_score += score_list[1] 
                     if piece == 'r': # If the piece is a Rook
-                        white_score += 5 
+                        white_score += score_list[2] 
                     if piece == 'n': # If the piece is a Knignt
-                        white_score += 3.5
+                        white_score += score_list[3]
                     if piece == 'b': # If the piece is a Bishop
-                        white_score += 3
+                        white_score += score_list[4]
                     if piece == 'p': # If the piece is a Pawn
-                        white_score += 1
+                        white_score += score_list[5]
                 elif piece in self.b_pieces: # Check if the piece is from the black piece list
                     if piece == 'K': # If the piece is a King
-                        black_score += 0
+                        black_score += score_list[0]
                     if piece == 'Q': # If the piece is a Queen
-                        black_score += 10
+                        black_score += score_list[1]
                     if piece == 'R': # If the piece is a Rook
-                        black_score += 5
+                        black_score += score_list[2]
                     if piece == 'N': # If the piece is a Knight
-                        black_score += 3.5
+                        black_score += score_list[3]
                     if piece == 'B': # If the piece is a Bishop
-                        black_score += 3
+                        black_score += score_list[4]
                     if piece == 'P': # If the piece is a Pawn
-                        black_score += 1
+                        black_score += score_list[5]
         
         print(f'White Score: {white_score}') # Print white pieces score
         print(f'Black Score: {black_score}') # Print black pieces score
