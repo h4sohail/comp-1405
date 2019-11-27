@@ -109,7 +109,7 @@ class ChessBoard():
         """
         white_score = 0 # Score for white pieces
         black_score = 0 # Score for black pieces
-        score_list = [0, 10, 5, 3.5, 3, 1]
+        score_list = [0, 10, 5, 3.5, 3, 1] # List of all the scores for pieces
         for row in self.chess_board: # Itterate over each row in the chessboard
             for piece in row: # Itterate over each piece in the row
                 if piece in self.w_pieces: # Check if the piece is from the white piece list
@@ -159,7 +159,6 @@ def main(): # Main function
     
     while(True): # Outter loop to remake the chessboard
         chess_board = ChessBoard() # Instantiate the ChessBoard class and generate a 2D list
-        chess_board.parse_move()
         chess_board.setup() # Call the setup method to populate the 2D list
         chess_board.calculate_score() # Call the calculate_score method to display the score
 
