@@ -24,9 +24,6 @@ class ChessBoard():
     def print_chess_board(self):
         """
         Prints the current state of the chessboard
-
-        Args:
-            self: instance of the class  
         """
         for row in self.chess_board: # Get each row in the chessboard list
             for item in row: # Get each item in the row
@@ -37,8 +34,6 @@ class ChessBoard():
         """
         Parses the user input to get the piece and the position
 
-        Args:
-            self: instance of the class  
         Returns:
             piece (string): The piece provided by the user, '-' if none provided
             column (int): The column position of the piece, '0' if no piece provided
@@ -64,9 +59,6 @@ class ChessBoard():
     def setup(self):
         """
         Sets up the chessboard from the user input for all 8 rows and prints it after each row
-
-        Args:
-            self: instance of the class  
         """
         for row in range(8): # Itterate over 8 rows in the chessboard
             piece, column = self.parse_move() # Call the parse_move method and store the returns
@@ -76,9 +68,6 @@ class ChessBoard():
     def move_piece(self):
         """
         Moves a piece based on user input
-
-        Args:
-            self: instance of the class  
         """
         choice = input(f'Would you like to move a piece (y/n): ').lower() # Ask the user if they would like to move a piece
         if choice == 'y': # If they say yes, continue
@@ -167,9 +156,10 @@ def main(): # Main function
     print('After the board has been populated you may chose to move pieces,') 
     print('remember for reference, the top left point is (0,0) and the bottom')
     print('right piece is (7,7)\n')
-
+    
     while(True): # Outter loop to remake the chessboard
         chess_board = ChessBoard() # Instantiate the ChessBoard class and generate a 2D list
+        chess_board.parse_move()
         chess_board.setup() # Call the setup method to populate the 2D list
         chess_board.calculate_score() # Call the calculate_score method to display the score
 
