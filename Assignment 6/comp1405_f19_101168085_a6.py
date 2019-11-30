@@ -1,11 +1,16 @@
 # Name: Hamza Sohail
 # Student Number: 101168085
 
-class ChessBoard():
+class ChessBoard(): # ChessBoard class
     def __init__(self):
         """
         This is the default constructor that initializes the ChessBoard class
         Generates a 2-D list used to represent the chessboard
+
+        @params:
+            None
+        @returns:
+            None
         """
         self.chess_board = [] # Empty chessboard list
 
@@ -13,14 +18,19 @@ class ChessBoard():
         self.b_pieces = ['K','Q','R','N','B','P'] # Black pieces
 
         for i in range(8): # Itterate over 8x8 list
-            row = []
+            row = [] # Create a new row
             for j in range(8):
-                row.append('-') 
-            self.chess_board.append(row) # Append '-' to each cell in 8x8 list
+                row.append('-') # Add '-' to each cell in the row
+            self.chess_board.append(row) # Append the row to the chessboard list
 
     def print_chess_board(self):
         """
         Prints the current state of the chessboard
+
+        @params:
+            None
+        @returns:
+            None
         """
         for row in self.chess_board: # Get each row in the chessboard list
             for item in row: # Get each item in the row
@@ -31,6 +41,8 @@ class ChessBoard():
         """
         Parses the user input to get the piece and the position
 
+        @params:
+            None
         @returns:
             string: The piece provided by the user, '-' if none provided
             int: The column position of the piece, '0' if no piece provided
@@ -56,6 +68,11 @@ class ChessBoard():
     def setup(self):
         """
         Sets up the chessboard from the user input for all 8 rows and prints it after each row
+        
+        @params:
+            None
+        @returns:
+            None
         """
         for row in range(8): # Itterate over 8 rows in the chessboard
             piece, column = self.parse_move() # Call the parse_move method and store the returns
@@ -65,18 +82,23 @@ class ChessBoard():
     def move_piece(self):
         """
         Moves a piece based on user input
+
+        @params:
+            None
+        @returns:
+            None
         """
         choice = input(f'Would you like to move a piece (y/n): ').lower() # Ask the user if they would like to move a piece
         if choice == 'y': # If they say yes, continue
             while(True):
-                row = int(input('Which row would you like to move from (top left is 0,0): ')) # Ask for the row to move from
-                column = int(input('Which column would you like to move from (top left is 0,0): ')) # Ask for the col to move from
+                row = int(input('Which row would you like to move from: ')) # Ask for the row to move from
+                column = int(input('Which column would you like to move from: ')) # Ask for the col to move from
                 if row >= 8 or row < 0 or column >= 8 or column < 0: # Input validation
                     print('Wrong selection, please try again')
                     continue # Keep looping
 
-                new_row = int(input('Which row would you like to move it to (top left is 0,0): ')) # Ask for the row to move to
-                new_col = int(input('Which column would you like to move it to (top left is 0,0): ')) # Ask for the col to move to
+                new_row = int(input('Which row would you like to move it to: ')) # Ask for the row to move to
+                new_col = int(input('Which column would you like to move it to: ')) # Ask for the col to move to
                 if new_row >= 8 or new_row < 0 or new_col >= 8 or new_col < 0: # Input validation
                     print('Wrong move, please try again')
                     continue # Keep looping
@@ -101,8 +123,10 @@ class ChessBoard():
         """
         Calculates the score of the chessboard based on individual pieces each player has
 
-        Args:
-            self: instance of the class  
+        @params:
+            None  
+        @returns:
+            None
         """
         white_score = 0 # Score for white pieces
         black_score = 0 # Score for black pieces
