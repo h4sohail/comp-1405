@@ -6,9 +6,6 @@ class ChessBoard():
         """
         This is the default constructor that initializes the ChessBoard class
         Generates a 2-D list used to represent the chessboard
-
-        Args:
-            self: instance of the class  
         """
         self.chess_board = [] # Empty chessboard list
 
@@ -34,9 +31,9 @@ class ChessBoard():
         """
         Parses the user input to get the piece and the position
 
-        Returns:
-            piece (string): The piece provided by the user, '-' if none provided
-            column (int): The column position of the piece, '0' if no piece provided
+        @returns:
+            string: The piece provided by the user, '-' if none provided
+            int: The column position of the piece, '0' if no piece provided
         """
         while(True): # Loop for input validation
             self.move = input('Initialize the board: ') # Get the user input
@@ -45,7 +42,7 @@ class ChessBoard():
                 continue
             else:
                 break
-
+               
         piece = self.move.strip('-') # Strip the '-' characters
         if piece == '': # (Edge case) No piece provided
             piece = '-' # Set the piece to '-'
@@ -153,6 +150,8 @@ def main(): # Main function
     print('\t--------')
     print('\t---k----')
     print('\t-------Q')
+    print('Black pieces: K, Q, R, B, N, P')
+    print('White pieces: k, q, r, b, n, p')
     print('After the board has been populated you may chose to move pieces,') 
     print('remember for reference, the top left point is (0,0) and the bottom')
     print('right piece is (7,7)\n')
@@ -180,4 +179,3 @@ def main(): # Main function
 # Entry point of the program
 if __name__ == '__main__':
     main()
-
